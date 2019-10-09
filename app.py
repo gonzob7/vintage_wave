@@ -1,4 +1,9 @@
 from flask import Flask, render_template
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.vintagewave
+products = db.products
 
 app = Flask(__name__)
 
@@ -9,7 +14,7 @@ def index():
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html')
+    return render_template('cart.html', products=products.find())
 
 @app.route('/contact')
 def contact():
