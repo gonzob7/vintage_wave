@@ -7,6 +7,9 @@ def index():
     """Return homepage."""
     return render_template('home.html')
 
+@app.route('/cart')
+def cart():
+    return render_template('cart.html')
 # OUR MOCK ARRAY OF PROJECTS
 # playlists = [
 #     { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
