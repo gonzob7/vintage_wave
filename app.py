@@ -10,6 +10,10 @@ def index():
 @app.route('/cart')
 def cart():
     return render_template('cart.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 # OUR MOCK ARRAY OF PROJECTS
 # playlists = [
 #     { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
