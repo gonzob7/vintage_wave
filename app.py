@@ -2,7 +2,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/home')
 def index():
     """Return homepage."""
     return render_template('home.html')
@@ -12,7 +12,7 @@ def index():
 #     { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
 #     { 'title': '80\'s Music', 'description': 'Don\'t stop believing!' }
 # ]
-# 
+#
 # @app.route('/playlists')
 # def playlists_index():
 #     """Show all playlists."""
