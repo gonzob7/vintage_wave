@@ -1,66 +1,24 @@
-<!-- templates/home.html -->
 {% extends 'base.html' %}
 
 {% block content %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/home">Vintage Wave🌊</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart">Cart</a>
-          </li>
-        </ul>
+    <h1 style="margin-top:30px;" align="center">Products</h1>
+    <div class="col-sm-12" align="center" style="margin-top:20px;">
+      <div class="col-md-8 offset-md-2 row">
+        {% for item in items %}
+          <div style="width:400px;margin:20px;border-radius:10px;" class="card mb-3">
+            <div class="row" style="width:100%;">
+              <a style="margin-left:20px;float:left;" class="text-danger" href="/delete/{{item['_id']}}"><span class="fa fa-trash"> delete</span></a>
+              <a style="margin-left:260px;float:right;" class="text-info" href="/edit/{{item['_id']}}"><span class="fa fa-pencil"></span> edit</a>
+            </div>
+            <h6 class="card-header">{{item['name']}}</h6>
+            <img style="max-width:200px;display: block;" src="{{item['image']}}" alt="Card image">
+            <div class="card-body">
+              <p><strong>{{item['price']}}</strong></p>
+              <p class="text-muted">{{item['description']}}</p>
+              <button class="btn btn-outline-primary" style="border-radius:10px;" id="{{item['_id']}}" onclick=addToCart("{{item['_id']}}")>Add to cart</button>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    </nav>
-
-
-<!-- READ -->
-    <div class="col-sm-12" align="center" style="margin-top:20px; margin-left:70px;">
-      <div class="col-md-12 row" align="center">
-        <div style="max-width:200px;margin:20px;" class="card mb-3">
-          <h6 class="card-header">Adidas Sweatshirt</h6>
-          <img style="max-width:200px;display: block;" src="https://d2h1pu99sxkfvn.cloudfront.net/b0/2772455/350604338_cFUEYx21HV/P0.jpg" alt="Card image">
-          <div class="card-body">
-            <button type="button" class="btn btn-outline-primary">Add to cart</button>
-          </div>
-        </div>
-        <div style="max-width:200px;margin:20px;" class="card mb-3">
-          <h6 class="card-header">Adidas Windbreaker</h6>
-          <img style="max-width:200px;display: block;" src="https://di2ponv0v5otw.cloudfront.net/posts/2018/07/19/5b50ce9459ea8504cae07381/m_5b50ce97c2e9fe4a0fb4a0b6.jpeg" alt="Card image">
-          <div class="card-body">
-            <button type="button" class="btn btn-outline-primary">Add to cart</button>
-          </div>
-        </div>
-        <div style="max-width:200px;margin:20px;" class="card mb-3">
-          <h6 class="card-header">Tommy Hilfiger Bomber Jacket</h6>
-          <img style="max-width:200px;display: block;" src="https://cdn.shopify.com/s/files/1/2090/1967/products/il_fullxfull.1491948902_pw6r.jpg?v=1531938393" alt="Card image">
-          <div class="card-body">
-            <button type="button" class="btn btn-outline-primary">Add to cart</button>
-          </div>
-        </div>
-        <div style="max-width:200px;margin:20px;" class="card mb-3">
-          <h6 class="card-header">Tommy Hilfiger Striped Fleece</h6>
-          <img style="max-width:200px;display: block;" src="https://di2ponv0v5otw.cloudfront.net/posts/2018/11/17/5befdbc2aaa5b8283692dde0/m_5befdbe6d6dc5207fd4111fd.jpg" alt="Card image">
-          <div class="card-body">
-            <button type="button" class="btn btn-outline-primary">Add to cart</button>
-          </div>
-        </div>
-        <div style="max-width:200px;margin:20px;" class="card mb-3">
-          <h6 class="card-header">Patagonia Graphic Tee</h6>
-          <img style="max-width:200px;display: block;" src="http://cdn.shopify.com/s/files/1/0217/8832/products/pata_teal_3_grande.jpg?v=1556154807" alt="Card image">
-          <div class="card-body">
-            <button type="button" class="btn btn-outline-primary">Add to cart</button>
-          </div>
-        </div>
-      </div>
+    </div>
 {% endblock %}
